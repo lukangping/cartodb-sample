@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)http://leon-cartodb.gandalf.realestate.com.au/investor_selector.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Invest yer ass...</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    
+    <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico">
+    <style>
+      html, body, #map {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      #property_layer_selector {
+        position: absolute;
+        top: 20px;
+        right: 110px;
+        padding: 0;
+      }
+      #property_layer_selector ul {
+        padding: 0; margin: 0;
+        list-style-type: none;
+      }
+
+      #property_layer_selector li {
+        border-bottom: 1px solid #999;
+        padding: 15px 30px;
+        font-family: "Helvetica", Arial;
+        font-size: 13px;
+        color: #444;
+        cursor: auto;
+      }
+
+      #property_layer_selector li:hover {
+        background-color: #F0F0F0;
+        cursor: pointer;
+      }
+
+      #property_layer_selector li.selected {
+        background-color: #EEE;
+      }
+
+      #bedroom_layer_selector {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 0;
+      }
+
+      #bedroom_layer_selector ul {
+        padding: 0; margin: 0;
+        list-style-type: none;
+      }
+
+      #bedroom_layer_selector li {
+        border-bottom: 1px solid #999;
+        padding: 15px 30px;
+        font-family: "Helvetica", Arial;
+        font-size: 13px;
+        color: #444;
+        cursor: auto;
+      }
+
+      #bedroom_layer_selector li:hover {
+        background-color: #F0F0F0;
+        cursor: pointer;
+      }
+
+      #bedroom_layer_selector li.selected {
+        background-color: #EEE;
+      }
+
+      #variable_selector {
+        position: absolute;
+        top: 20px;
+        right: 220px;
+        padding: 0;
+      }
+
+      #variable_selector ul {
+        padding: 0; margin: 0;
+        list-style-type: none;
+      }
+
+      #variable_selector li {
+        border-bottom: 1px solid #999;
+        padding: 15px 30px;
+        font-family: "Helvetica", Arial;
+        font-size: 13px;
+        color: #444;
+        cursor: auto;
+      }
+
+      #variable_selector li:hover {
+        background-color: #F0F0F0;
+        cursor: pointer;
+      }
+
+      #variable_selector li.selected {
+        background-color: #EEE;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
+    <![endif]-->
+  <style></style><style>#haloword-pron { background: url(chrome-extension://bhkcehpnnlgncpnefpanachijmhikocj/img/icon.svg) -94px -34px; }#haloword-pron:hover { background: url(chrome-extension://bhkcehpnnlgncpnefpanachijmhikocj/img/icon.svg) -111px -34px; }#haloword-open { background: url(chrome-extension://bhkcehpnnlgncpnefpanachijmhikocj/img/icon.svg) -94px -17px; }#haloword-open:hover { background: url(chrome-extension://bhkcehpnnlgncpnefpanachijmhikocj/img/icon.svg) -111px -17px; }#haloword-close { background: url(chrome-extension://bhkcehpnnlgncpnefpanachijmhikocj/img/icon.svg) -94px 0; }#haloword-close:hover { background: url(chrome-extension://bhkcehpnnlgncpnefpanachijmhikocj/img/icon.svg) -111px 0; }#haloword-add { background: url(chrome-extension://bhkcehpnnlgncpnefpanachijmhikocj/img/icon.svg) -94px -51px; }#haloword-add:hover { background: url(chrome-extension://bhkcehpnnlgncpnefpanachijmhikocj/img/icon.svg) -111px -51px; }#haloword-remove { background: url(chrome-extension://bhkcehpnnlgncpnefpanachijmhikocj/img/icon.svg) -94px -68px; }#haloword-remove:hover { background: url(chrome-extension://bhkcehpnnlgncpnefpanachijmhikocj/img/icon.svg) -111px -68px; }</style><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+  <body>
+    <div id="map"><div style="position: relative; width: 100%; height: 100%;"><div class="cartodb-map-wrapper leaflet-container leaflet-fade-anim" tabindex="0" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; width: 100%;"><div class="leaflet-map-pane" style="-webkit-transform: translate3d(0px, -345px, 0);"><div class="leaflet-tile-pane"><div class="leaflet-layer" style="z-index: 0;"><div class="leaflet-tile-container leaflet-zoom-animated"></div><div class="leaflet-tile-container leaflet-zoom-animated"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 721px; top: 231px;" src="./Invest yer ass..._files/png8"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 465px; top: 231px;" src="./Invest yer ass..._files/png8(1)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 721px; top: -25px;" src="./Invest yer ass..._files/png8(2)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 721px; top: 487px;" src="./Invest yer ass..._files/png8(3)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 465px; top: -25px;" src="./Invest yer ass..._files/png8(4)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 465px; top: 487px;" src="./Invest yer ass..._files/png8(5)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 209px; top: 231px;" src="./Invest yer ass..._files/png8(6)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 977px; top: 231px;" src="./Invest yer ass..._files/png8(7)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 977px; top: 487px;" src="./Invest yer ass..._files/png8(8)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 977px; top: -25px;" src="./Invest yer ass..._files/png8(9)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 209px; top: 487px;" src="./Invest yer ass..._files/png8(10)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 209px; top: -25px;" src="./Invest yer ass..._files/png8(11)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 1233px; top: 231px;" src="./Invest yer ass..._files/png8(12)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: -47px; top: 231px;" src="./Invest yer ass..._files/png8(13)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 1233px; top: -25px;" src="./Invest yer ass..._files/png8(14)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: -47px; top: 487px;" src="./Invest yer ass..._files/png8(15)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: -47px; top: -25px;" src="./Invest yer ass..._files/png8(16)"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 1233px; top: 487px;" src="./Invest yer ass..._files/png8(17)"></div></div><div class="leaflet-layer" style="z-index: 1; opacity: 0.99;"><div class="leaflet-tile-container leaflet-zoom-animated"></div><div class="leaflet-tile-container leaflet-zoom-animated"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 721px; top: 231px;" src="./Invest yer ass..._files/614.png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 465px; top: 231px;" src="./Invest yer ass..._files/614(1).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 721px; top: -25px;" src="./Invest yer ass..._files/613.png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 721px; top: 487px;" src="./Invest yer ass..._files/615.png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 465px; top: -25px;" src="./Invest yer ass..._files/613(1).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 465px; top: 487px;" src="./Invest yer ass..._files/615(1).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 209px; top: 231px;" src="./Invest yer ass..._files/614(2).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 977px; top: 231px;" src="./Invest yer ass..._files/614(3).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 977px; top: 487px;" src="./Invest yer ass..._files/615(2).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 977px; top: -25px;" src="./Invest yer ass..._files/613(2).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 209px; top: 487px;" src="./Invest yer ass..._files/615(3).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 209px; top: -25px;" src="./Invest yer ass..._files/613(3).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 1233px; top: 231px;" src="./Invest yer ass..._files/614(4).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: -47px; top: 231px;" src="./Invest yer ass..._files/614(5).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 1233px; top: -25px;" src="./Invest yer ass..._files/613(4).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: -47px; top: 487px;" src="./Invest yer ass..._files/615(4).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: -47px; top: -25px;" src="./Invest yer ass..._files/613(5).png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; left: 1233px; top: 487px;" src="./Invest yer ass..._files/615(5).png"></div></div></div><div class="leaflet-objects-pane"><div class="leaflet-shadow-pane"></div><div class="leaflet-overlay-pane"></div><div class="leaflet-marker-pane"></div><div class="leaflet-popup-pane"></div></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control">©2012 Nokia <a href="http://here.net/services/terms" target="_blank">Terms of use</a>, CartoDB <a href="http://cartodb.com/attributions" target="_blank">attribution</a></div></div></div><div class="cartodb-logo" style="position:absolute; bottom:0; left:0; display:block; border:none; z-index:1000000;"><a href="http://www.cartodb.com/" target="_blank"><img width="71" height="29" src="./Invest yer ass..._files/new_logo.png" style="position:absolute; bottom:8px; left:8px; display:block; width:71px!important; height:29px!important; border:none; outline:none;" alt="CartoDB" title="CartoDB"></a></div></div><div class="cartodb-zoom"><a class="zoom_in">+</a><a class="zoom_out">-</a></div><div class="cartodb-tiles-loader" style="opacity: 0;"><div class="loader"></div></div></div></div>
+    <div id="property_layer_selector" class="cartodb-infobox">
+      <ul>
+        <li data="HOUSE" class="selected">House</li>
+        <li data="UNIT">Unit</li>
+      </ul>
+    </div>
+    <div id="bedroom_layer_selector" class="cartodb-infobox">
+      <ul>
+        <li data="1" class="selected">1</li>
+        <li data="2">2</li>
+        <li data="3">3</li>
+        <li data="4">4</li>
+        <li data="5+">5+</li>
+        <li data="ALL">ALL</li>
+      </ul>
+    </div>
+    <div id="variable_selector" class="cartodb-infobox">
+      <ul>
+        <li data="annual_growth" class="selected">Annual Growth</li>
+        <li data="median_rental_price">Median Rental Price</li>
+        <li data="median_sold_price">Median Sold Price</li>
+        <li data="rental_demand">Rental Demand</li>
+        <li data="rental_yield">Rental Yield</li>
+      </ul>
+    </div>
+
+    <!-- include cartodb.js library -->
+    <script src="./Invest yer ass..._files/cartodb.uncompressed.js"></script>
+
+    <script>
+
+      // default query
+      var query = "SELECT g.*, i.median_sold_price, i.annual_growth, i.median_rental_price, i.rental_demand, i.rental_yield FROM investor_suburb_geos g, investor_suburb_investments i where g.suburb_nam = i.suburb_name and g.postcode = i.postcode and g.state = i.state and property_type = 'HOUSE'and bedrooms = 'ALL'";
+
+      var sql = new cartodb.SQL({ host: 'leon-cartodb.gandalf.realestate.com.au', protocol: 'http', port: '8080', user: 'leon', format: 'geojson' });
+
+      var $propertyTypeOptions = $('#property_layer_selector li');
+      var $bedroomOptions = $('#bedroom_layer_selector li');
+      var $varOptions = $('#variable_selector li');
+
+      var selectedProperty = "HOUSE";
+      var selectedBedroom = "ALL";
+      var selectedVar = "annual_growth";
+
+      var annual_growth_css = "#investor_suburb_geos{line-color: #FFF; line-opacity: 1; line-width: 1; polygon-opacity: 0.8; } #investor_suburb_geos [ annual_growth <= 1.857] {polygon-fill: #B10026; } #investor_suburb_geos [ annual_growth <= 0.319] {polygon-fill: #E31A1C; } #investor_suburb_geos [ annual_growth <= 0.189] {polygon-fill: #FC4E2A; } #investor_suburb_geos [ annual_growth <= 0.098] {polygon-fill: #FD8D3C; } #investor_suburb_geos [ annual_growth <= 0.009] {polygon-fill: #FEB24C; }";
+
+      var median_rental_price_css = "#investor_suburb_geos{line-color: #FFF; line-opacity: 1; line-width: 1; polygon-opacity: 0.8; } #investor_suburb_geos [ median_rental_price <= 3800] {polygon-fill: #B10026; } #investor_suburb_geos [ median_rental_price <= 935] {polygon-fill: #E31A1C; } #investor_suburb_geos [ median_rental_price <= 710] {polygon-fill: #FC4E2A; } #investor_suburb_geos [ median_rental_price <= 565.5] {polygon-fill: #FD8D3C; } #investor_suburb_geos [ median_rental_price <= 451] {polygon-fill: #FEB24C; } #investor_suburb_geos [ median_rental_price <= 347.5] {polygon-fill: #FED976; }";
+
+      var median_sold_price_css = "#investor_suburb_geos{line-color: #FFF; line-opacity: 1; line-width: 1; polygon-opacity: 0.8; } #investor_suburb_geos [ median_sold_price <= 24768500] {polygon-fill: #B10026; } #investor_suburb_geos [ median_sold_price <= 897000] {polygon-fill: #E31A1C; } #investor_suburb_geos [ median_sold_price <= 649500] {polygon-fill: #FC4E2A; } #investor_suburb_geos [ median_sold_price <= 495750] {polygon-fill: #FD8D3C; } #investor_suburb_geos [ median_sold_price <= 388000] {polygon-fill: #FEB24C; } #investor_suburb_geos [ median_sold_price <= 291500] {polygon-fill: #FED976; } #investor_suburb_geos [ median_sold_price <= 183500] {polygon-fill: #FFFFB2; }";
+
+      var rental_demand_css = "#investor_suburb_geos{line-color: #FFF; line-opacity: 1; line-width: 1; polygon-opacity: 0.8; } #investor_suburb_geos [ rental_demand <= 184] {polygon-fill: #B10026; } #investor_suburb_geos [ rental_demand <= 50.18] {polygon-fill: #E31A1C; } #investor_suburb_geos [ rental_demand <= 38.68] {polygon-fill: #FC4E2A; } #investor_suburb_geos [ rental_demand <= 29.89] {polygon-fill: #FD8D3C; } #investor_suburb_geos [ rental_demand <= 22.19] {polygon-fill: #FEB24C; } #investor_suburb_geos [ rental_demand <= 15.02] {polygon-fill: #FED976; } #investor_suburb_geos [ rental_demand <= 8.6] {polygon-fill: #FFFFB2; }";
+      
+      var rental_yield_css = "#investor_suburb_geos{line-color: #FFF; line-opacity: 1; line-width: 1; polygon-opacity: 0.8; } #investor_suburb_geos [ rental_yield <= 0.398667] {polygon-fill: #B10026; } #investor_suburb_geos [ rental_yield <= 0.065272] {polygon-fill: #E31A1C; } #investor_suburb_geos [ rental_yield <= 0.0494426] {polygon-fill: #FC4E2A; } #investor_suburb_geos [ rental_yield <= 0.0403765] {polygon-fill: #FD8D3C; } #investor_suburb_geos [ rental_yield <= 0.034] {polygon-fill: #FEB24C; } #investor_suburb_geos [ rental_yield <= 0.0267405] {polygon-fill: #FED976; } #investor_suburb_geos [ rental_yield <= 0.0196061] {polygon-fill: #FFFFB2; }";
+
+      function applyOptions (layer) {
+
+          //filter by type and bedroom
+          query = "SELECT g.*, i.median_sold_price, i.annual_growth, i.median_rental_price, i.rental_demand, i.rental_yield FROM investor_suburb_geos g, investor_suburb_investments i where g.suburb_nam = i.suburb_name and g.postcode = i.postcode and g.state = i.state and property_type = '"+selectedProperty+"' and bedrooms = '"+selectedBedroom+"'"; 
+
+          console.log(query);
+          layer.setQuery(query);
+
+          
+          //apply the correct style
+          switch(selectedVar)
+          {
+          case "annual_growth":
+            layer.setCartoCSS(annual_growth_css);
+            break;
+          case "median_rental_price":
+            layer.setCartoCSS(median_rental_price_css);
+            break;
+          case "median_sold_price":
+            layer.setCartoCSS(median_sold_price_css);
+            break;
+          case "rental_demand":
+            layer.setCartoCSS(rental_demand_css);
+            break;
+          case "rental_yield":
+            layer.setCartoCSS(rental_yield_css);
+            break;
+          default:
+            break;
+          }
+
+
+          
+      }
+
+      // create layer selector
+      function createSelector(layer) {
+        
+        
+        $propertyTypeOptions.click(function(e) {
+          // get the attribute of the selected layer
+          var $li = $(e.target);
+          selectedProperty = $li.attr('data');
+
+          // deselect all and select the clicked one
+          $propertyTypeOptions.removeClass('selected');
+          $li.addClass('selected');
+
+          applyOptions(layer);
+
+        });
+
+        $bedroomOptions.click(function(e) {
+          // get the attribute of the selected layer
+          var $li = $(e.target);
+          selectedBedroom = $li.attr('data');
+
+          // deselect all and select the clicked one
+          $bedroomOptions.removeClass('selected');
+          $li.addClass('selected');
+
+          applyOptions(layer);
+
+        });
+
+
+        $varOptions.click(function(e) {
+          // get the attribute of the selected layer
+          var $li = $(e.target);
+          selectedVar = $li.attr('data');
+
+          // deselect all and select the clicked one
+          $varOptions.removeClass('selected');
+          $li.addClass('selected');
+
+          applyOptions(layer);
+
+        });
+
+      }
+
+      function main() {
+        cartodb.createVis('map', 'http://leon.leon-cartodb.gandalf.realestate.com.au:3000/api/v2/viz/e6d27b0c-4774-11e3-b179-22000af10057/viz.json', {
+          tiles_loader: true,
+          center_lat: -33.88,
+          center_lon: 151.17,
+          zoom: 10,
+          no_cdn: true,
+          legends: false
+        })
+        .done(function(vis, layers) {
+          // layer 0 is the base layer, layer 1 is cartodb layer
+          createSelector(layers[1]);
+        })
+        .error(function(err) {
+          console.log(err);
+        });
+      }
+
+      window.onload = main;
+    </script>
+  
+
+<div id="haloword-lookup" class="ui-widget-content ui-draggable"><div id="haloword-title"><span id="haloword-word"></span><a herf="#" id="haloword-pron" class="haloword-button" title="发音"></a><audio id="haloword-audio"></audio><div id="haloword-control-container"><a herf="#" id="haloword-add" class="haloword-button" title="加入单词表"></a><a herf="#" id="haloword-remove" class="haloword-button" title="移出单词表"></a><a href="http://leon-cartodb.gandalf.realestate.com.au/investor_selector.html#" id="haloword-open" class="haloword-button" title="查看单词详细释义" target="_blank"></a><a herf="#" id="haloword-close" class="haloword-button" title="关闭查询窗"></a></div><br style="clear: both;"></div><div id="haloword-content"></div></div></body></html>

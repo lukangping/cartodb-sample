@@ -1,0 +1,27 @@
+<html>
+<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+<!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
+<![endif]-->
+<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+<body>
+	<div id="map"></map>
+		<script>
+		function main(){
+			cartodb.createVis('map', 'http://lukangping.cartodb.com/api/v2/viz/1b976f4c-5b5b-11e3-803e-6525ab1ff67d/viz.json')
+			.done(function(vis, layers){
+				console.log("visualization is done.");
+				// layers[1].setInteraction(true);
+// 			    layers[1].on('featureOver', function(e, latlng, pos, data, layerNumber) {
+// 			      cartodb.log.log(e, latlng, pos, data, layerNumber);
+// 			    });
+			})
+			.error(function(){
+				console.log("visualization error.");
+			});
+		}
+		
+		window.onload=main;
+		</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+<!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
+<![endif]-->
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+<body>
+	<div id="map" style="height: 100%"></map>
+	<script>
+		var mapOptions = {
+			zoom: 3,
+			center: new google.maps.LatLng(43, 0),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map =  new google.maps.Map(document.getElementById('map'),  mapOptions);
+
+		cartodb.createLayer(map, 'http://lukangping.cartodb.com/api/v2/viz/1b976f4c-5b5b-11e3-803e-6525ab1ff67d/viz.json')
+		.addTo(map)
+		.on('done', function(layer) {
+		    //do stuff
+		})
+		.on('error', function(err) {
+		  alert("some error occurred: " + err);
+		});
+		
+	</script>
+</body>
+</html>

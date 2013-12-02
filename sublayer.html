@@ -1,0 +1,39 @@
+<html>
+<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+<!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
+<![endif]-->
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+<body>
+	<div id="map" style="height: 100%"></map>
+	<script>
+	var subLayer;
+		var mapOptions = {
+			zoom: 3,
+			center: new google.maps.LatLng(43, 0),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map =  new google.maps.Map(document.getElementById('map'),  mapOptions);
+		
+		cartodb.createLayer(map, {
+			user_name: 'lukangping',
+			type: 'cartodb',
+			sublayers: [{
+				sql: "select * from tm_world_borders_simpl_0_3 ",
+				cartocss: '#tm_world_borders_simpl_0_3 {polygon-fill: #FF6600;polygon-opacity: 0.7;line-width: 1;line-color: #FFF;line-opacity: 1;}'
+			}]
+		}).addTo(map)
+		.on('done', function(layer) {
+		    console.log("layer done.");
+			
+			layer.getSubLayer(0).setSQL("select * from tm_world_borders_simpl_0_3 where name='China'");
+			
+		})
+		.on('error', function(err) {
+		  alert("some error occurred: " + err);
+		});
+		
+	</script>
+</body>
+</html>
