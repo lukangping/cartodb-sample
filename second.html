@@ -8,11 +8,11 @@
 	<div id="map" style="height: 100%"></map>
 	<script>
 		var map = new L.Map('map', {
-		    center: [0,0],
-		    zoom: 2
+		    center: [5,10],
+		    zoom: 4
 		  });
 
-		cartodb.createLayer(map, 'http://lukangping.cartodb.com/api/v2/viz/1b976f4c-5b5b-11e3-803e-6525ab1ff67d/viz.json')
+		cartodb.createLayer(map, 'http://lukangping.cartodb.com/api/v2/viz/df8e46ae-5c47-11e3-8858-139aa6e1b40f/viz.json')
 		.addTo(map)
 		.on('done', function(layer) {
 		    //do stuff

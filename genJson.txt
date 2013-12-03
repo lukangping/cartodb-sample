@@ -1,0 +1,23 @@
+{
+	"type":"FeatureCollection",
+	"features":
+[
+    '{{repeat(5000)}}',
+    {
+        index: '{{index}}',
+        type: "Feature",
+        properties: {
+            num: '{{numeric(20,40)}}'
+        },
+        "geometry":
+        {
+            "type":"Polygon",
+            "coordinates":function(idx){
+                var r=this.numeric(1, 100);
+                var q=this.numeric(1, 100);
+                return [[[r-0.5,q-0.5],[r+0.5,q-0.5],[r+0.5,q+0.5],[r-0.5,q+0.5]]];}
+        }
+    }
+]
+}
+http://lukangping.cartodb.com/api/v2/viz/3e8f6f6e-5c4a-11e3-b2e5-7f5b8b75c46e/viz.json
