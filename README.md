@@ -1,3 +1,7 @@
+54.206.2.225 localhost.lan
+54.206.2.225 development.localhost.lan
+ec2-54-206-1-99.ap-southeast-2.compute.amazonaws.com
+
 https://github.com/jmcunningham/AngularJS-Learning
 
 -----------------
